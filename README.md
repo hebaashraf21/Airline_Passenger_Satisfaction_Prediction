@@ -33,7 +33,7 @@ o Test data: 25976 rows × 25 columns
       <img src="assets/univariate_pie_6.png" alt="" >
       <img src="assets/univariate_pie_7.png" alt="" ><br>
 
-      Insights:<br>
+      • Insights:<br>
       - There is an almost equal number of male and female participants in the survey.<br>
       - Most of passengers are neutral or dissatisfied = 56.7% ==> we need to analysis the reasons and try to find business solutions to make them more satisfied<br>
       - We have more loyal customer data (81.7%) <br>
@@ -43,7 +43,7 @@ o Test data: 25976 rows × 25 columns
       2.1.2 Histogram for numerical variables<br>
        <img src="assets/univariate_histograms_training.png" alt="" ><br>
 
-   Insights: <br>
+   • Insights: <br>
    - Most of the delays are 0, which is a good indicator.<br>
    - The variables Flight Distance and Departure Delay and Arrival Delay are all heavily right-skewed.<br>
 
@@ -69,7 +69,7 @@ Then we focused on plotting the distribution for satisfied & dissatisfied for ea
 Grouping to help in insights:<br>
 <img src="assets/grouping.png" alt="" ><br>
 
-Insights: <br>
+• Insights: <br>
 - Gender nearly doesn't affect satisfaction.<br>
 - Loyal passengers have higher satisfaction percentages than Disloyal ones.<br>
 - Satisfied Passengers usually go for Business travel.<br>
@@ -102,20 +102,55 @@ Insights:<br>
 
 <img src="assets/arrival_departure_correlation.png" alt="" ><br>
 
-Insights:<br>
+• Insights:<br>
 - There is a strong correlation between the two columns we can drop one of the two columns and as Arrival Delay in Minutes column has some null, we can drop it.<br>
 - Remove quintile columns ['Age_quintile', 'Flight Distance_quintile', 'Arrival Delay in Minutes_quintile', 'Departure Delay in Minutes_quintile']<br>
 
 
 2.4 Clustring:<br>
 Applying Kmeans on the data with 3 clusters<br>
-<img src="assets/cluster_distribution•
+<img src="assets/cluster_distribution.png"><br>
 The portion of each class:<br>
 o Class 1 ==> 0.630900 <br>
 o Class 0 ==> 0.219453 <br>
 o Class 2 ==> 0.149648 <br>
 • Most of the data (63%) is in one cluster (cluster 1) <br>
-• Showing aggregates of each numeric column grouped by the cluster.png" alt="" ><br>
+• Showing aggregates of each numeric column grouped by the cluster.<br>
+
+<img src="assets/clusters_data.png"><br>
+
+• Insights:<br>
+− All age values are in the 3 clusters [7-85]<br>
+− Flight Distances is distributed on all clusters without intersection between them:<br>
+− Cluster 1 contains flight distance in the range [1137:2418]<br>
+− Cluster 0 contains flight distance in the range [31:1136]<br>
+− Cluster 2 contains flight distance in the range [2419:4983]<br>
+− Value 0 for seat comfort column is only in cluster 1<br>
+− Value 0 for Checkin service column is only in cluster 1<br>
+− Values in range [1017:1592] don't exist in class 0<br>
+− Values in range [1305:1592] don't exist in class 2<br>
+
+Show the cluster distribution over the categories of categorical features:<br>
+<img src="assets/distribution_by_cluster.png"><br>
+
+• Insights:<br>
+- Cluster 1 is the major class in all values in all columns.<br>
+- Satisfied customers are distributed over all cluster.<br>
+- Dissatisfied or neutral customers are distributed over all cluster.<br>
+- Each gender is distributed over all clusters.<br>
+- Loyal customer is distributed over all clusters.<br>
+- Cluster 2 doesn't contain Disloyal customers.<br>
+- The portion of customers with type of travel is personal in cluster 2 is very small.<br>
+- All values of [Inflight WiFi service, departure arrival time convenient, Ease of online booking, Gate Location, Food and drink,<br>
+- seat comfort, inflight entertainment, on-board service, Baggage handling, Checkin service, inflight service & cleanliness] are distributed over all clusters.<br>
+- The portion of departure arrival time convenient with value 0 in cluster 2 is very small.<br>
+- Cluster 2 doesn't contain customers of Eco plus class.<br>
+- The portion of of customers of Eco class in cluster 2 is very small.<br>
+- Cluster 2 doesn't contain values 0 of Online boarding.<br>
+- Values 0 of Leg room service are all in cluster 1.<br>
+
+
+
 
 
 
