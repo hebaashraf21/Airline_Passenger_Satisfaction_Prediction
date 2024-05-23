@@ -24,36 +24,45 @@ o Test data: 25976 rows × 25 columns
 
 **2. 🛰️ Exploratory Data Analysis**:<br>
   **2.1 Univariate Analysis**<br>
-      2.1.1 Charts for categorical variables:<br>
+    2.1.1 Charts for categorical variables:<br>
       <img src="assets/univariate_pie_1.png" alt="" >
       <img src="assets/univariate_pie_2.png" alt="" >
       <img src="assets/univariate_pie_3.png" alt="" >
       <img src="assets/univariate_pie_4.png" alt="" >
       <img src="assets/univariate_pie_5.png" alt="" >
       <img src="assets/univariate_pie_6.png" alt="" >
-      <img src="assets/univariate_pie_7.png" alt="" ><br>
+      <img src="assets/univariate_pie_7.png" alt="" >
 
-      • Insights:<br>
-      - There is an almost equal number of male and female participants in the survey.<br>
-      - Most of passengers are neutral or dissatisfied = 56.7% ==> we need to analysis the reasons and try to find business solutions to make them more satisfied<br>
-      - We have more loyal customer data (81.7%) <br>
-      - Most of travels are for Business travel (69%)<br>
-      - Very few people fly in the economy plus class. They usually prefer Economy or Business.<br>
+   **• Insights**:
+      
+     - There is an almost equal number of male and female participants in the survey.
+      
+     - Most of passengers are neutral or dissatisfied = 56.7% ==> we need to analysis the reasons and try to find business solutions to make them more satisfied
+      
+     - We have more loyal customer data (81.7%)
+      
+     - Most of travels are for Business travel (69%)
+      
+     - Very few people fly in the economy plus class. They usually prefer Economy or Business.<br>
 
-      2.1.2 Histogram for numerical variables<br>
+ 2.1.2 Histogram for numerical variables<br>
        <img src="assets/univariate_histograms_training.png" alt="" ><br>
 
-   • Insights: <br>
+   • **Insights**: <br>
    - Most of the delays are 0, which is a good indicator.<br>
    - The variables Flight Distance and Departure Delay and Arrival Delay are all heavily right-skewed.<br>
 
-   Investigate problem of outliers:<br>
+   Investigate problem of outliers:
 
-      Portion of outliers in each column:<br>
-         Departure Delay in Minutes 0.139831<br>
-         Arrival Delay in Minutes   0.134699<br>
-         Flight Distance            0.022049<br>
-
+      Portion of outliers in each column:
+      
+       Departure Delay in Minutes: 0.139831
+       
+       Arrival Delay in Minutes:   0.134699
+       
+       Flight Distance:            0.022049
+         
+         
 - Since the portion of rows having the outliers in the "Flight Distance" is very small so we will remove it.<br>
 - We will normalize "Departure Delay in Minutes","Arrival Delay in Minutes"<br>
 <img src="assets/univariate_histograms_after_handling_outliers_training.png" alt="" ><br>
@@ -69,7 +78,7 @@ Then we focused on plotting the distribution for satisfied & dissatisfied for ea
 Grouping to help in insights:<br>
 <img src="assets/grouping.png" alt="" ><br>
 
-• Insights: <br>
+• **Insights**: <br>
 - Gender nearly doesn't affect satisfaction.<br>
 - Loyal passengers have higher satisfaction percentages than Disloyal ones.<br>
 - Satisfied Passengers usually go for Business travel.<br>
@@ -88,13 +97,13 @@ Grouping to help in insights:<br>
 
 2.2.3 Correlation between satisfaction and other columns<br>
 <img src="assets/bivariate_correlation.png" alt="" ><br>
-Insights:<br>
+**Insights**:<br>
 Positively Correlated: - Business Class ,online boarding, inflight entertainment, seat comfort, on-board service, Legroom service, cleanliness, Flight distance, and Business travels are strong reasons for people satisfaction.<br>
 Negatively Correlated: - Personal Travels, Economy Class, Eco plus Class or being Disloyal Customer results in Unsatisfaction.<br>
 
 **2.3 Multivariate Analysis**<br>
 <img src="assets/multivariate_correlation.png" alt="" ><br>
-Insights:<br>
+**Insights**:<br>
 - Departure Delay is highly correlated with Arrival Delay. [Will deal with this in feature engineering].<br>
 - Inflight WiFi service and Ease of online booking are + correlated.<br>
 - Inflight entertainment, Food and Drink, Seat comfort and cleanliness are + correlated.<br>
@@ -102,7 +111,7 @@ Insights:<br>
 
 <img src="assets/arrival_departure_correlation.png" alt="" ><br>
 
-• Insights:<br>
+• **Insights**:<br>
 - There is a strong correlation between the two columns we can drop one of the two columns and as Arrival Delay in Minutes column has some null, we can drop it.<br>
 - Remove quintile columns ['Age_quintile', 'Flight Distance_quintile', 'Arrival Delay in Minutes_quintile', 'Departure Delay in Minutes_quintile']<br>
 
@@ -111,15 +120,18 @@ Insights:<br>
 Applying Kmeans on the data with 3 clusters<br>
 <img src="assets/cluster_distribution.png"><br>
 The portion of each class:<br>
-o Class 1 ==> 0.630900 <br>
-o Class 0 ==> 0.219453 <br>
-o Class 2 ==> 0.149648 <br>
+<ol>
+ <li>Class 1 ==> 0.630900</li>
+ <li>Class 0 ==> 0.219453</li>
+ <li>Class 2 ==> 0.149648</li>
+</ol>
+
 • Most of the data (63%) is in one cluster (cluster 1) <br>
 • Showing aggregates of each numeric column grouped by the cluster.<br>
 
 <img src="assets/clusters_data.png"><br>
 
-• Insights:<br>
+• **Insights**:<br>
 − All age values are in the 3 clusters [7-85]<br>
 − Flight Distances is distributed on all clusters without intersection between them:<br>
 − Cluster 1 contains flight distance in the range [1137:2418]<br>
@@ -135,7 +147,7 @@ Show the cluster distribution over the categories of categorical features:<br>
 
 <img src="assets/quintile_distribution_by_cluster.png"><br>
 
-• Insights:<br>
+• **Insights**:<br>
 - Cluster 1 is the major class in all values in all columns.<br>
 - Satisfied customers are distributed over all cluster.<br>
 - Dissatisfied or neutral customers are distributed over all cluster.<br>
@@ -153,10 +165,13 @@ Show the cluster distribution over the categories of categorical features:<br>
 
 **2.5 Association Rules** <br>
 Applying Apriori algorithm with minimum support = 0.25 and minimum cardinality = 2<br><br>
+
 •Top 10 rules sorted by support:<br><br>
 <img src="assets/top_10_support.png"><br>
+
 •Top 10 rules sorted by confidence:<br><br>
 <img src="assets/top_10_confidence.png"><br>
+
 •Top 10 rules sorted by lift:<br><br>
 <img src="assets/top_10_lift.png"><br>
 
@@ -173,7 +188,7 @@ Associaton Rules Analysis <br><br>
 - The most interesting rules that are likely to provide real business value and insights are those with high lift values.<br>
 - Lift measures how much more likely the consequent (rhs) is, given the antecedent (lhs), compared to if the two were independent.<br><br>
 
-• Insights:<br>
+• **Insights**:<br>
 o If a customer's type of travel is "Personal Travel", then there is a strong association with the customer being classified as "Eco" class and a "Loyal Customer".<br>
 o The lift value of 2.3681 indicates that the occurrence of the antecedent and consequent together is 2.3681 times more likely than if they were statistically independent.<br>
 o This means that customers who travel for personal reasons are 2.3681 times more likely to be classified as "Eco" class and "Loyal Customers" compared to what would be expected if these attributes were unrelated.<br>
