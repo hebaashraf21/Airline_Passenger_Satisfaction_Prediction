@@ -23,7 +23,7 @@ o Test data: 25976 rows × 25 columns
 - Remove unnecessary columns:  ID, Unamed:0
 
 2. **Exploratory Data Analysis**:<br>
-  2.1 Univariate Analysis<br>
+  **2.1 Univariate Analysis**<br>
       2.1.1 Charts for categorical variables:<br>
       <img src="assets/univariate_pie_1.png" alt="" >
       <img src="assets/univariate_pie_2.png" alt="" >
@@ -58,7 +58,7 @@ o Test data: 25976 rows × 25 columns
 - We will normalize "Departure Delay in Minutes","Arrival Delay in Minutes"<br>
 <img src="assets/univariate_histograms_after_handling_outliers_training.png" alt="" ><br>
 
-2.2 Bivariate Analysis<br>
+**2.2 Bivariate Analysis**<br>
 2.2.1 Bar charts & Pie charts for categorical features<br>
 <img src="assets/bivariate_bar.png" alt="" ><br>
 Then we focused on plotting the distribution for satisfied & dissatisfied for each feature:<br>
@@ -92,7 +92,7 @@ Insights:<br>
 Positively Correlated: - Business Class ,online boarding, inflight entertainment, seat comfort, on-board service, Legroom service, cleanliness, Flight distance, and Business travels are strong reasons for people satisfaction.<br>
 Negatively Correlated: - Personal Travels, Economy Class, Eco plus Class or being Disloyal Customer results in Unsatisfaction.<br>
 
-2.3 Multivariate Analysis<br>
+**2.3 Multivariate Analysis**<br>
 <img src="assets/multivariate_correlation.png" alt="" ><br>
 Insights:<br>
 - Departure Delay is highly correlated with Arrival Delay. [Will deal with this in feature engineering].<br>
@@ -107,7 +107,7 @@ Insights:<br>
 - Remove quintile columns ['Age_quintile', 'Flight Distance_quintile', 'Arrival Delay in Minutes_quintile', 'Departure Delay in Minutes_quintile']<br>
 
 
-2.4 Clustring:<br>
+**2.4 Clustring:**<br>
 Applying Kmeans on the data with 3 clusters<br>
 <img src="assets/cluster_distribution.png"><br>
 The portion of each class:<br>
@@ -150,6 +150,82 @@ Show the cluster distribution over the categories of categorical features:<br>
 - The portion of of customers of Eco class in cluster 2 is very small.<br>
 - Cluster 2 doesn't contain values 0 of Online boarding.<br>
 - Values 0 of Leg room service are all in cluster 1.<br>
+
+**2.5 Association Rules** <br>
+Applying Apriori algorithm with minimum support = 0.25 and minimum cardinality = 2<br><br>
+•Top 10 rules sorted by support:<br><br>
+<img src="assets/top_10_support.png"><br>
+•Top 10 rules sorted by confidence:<br><br>
+<img src="assets/top_10_confidence.png"><br>
+•Top 10 rules sorted by lift:<br><br>
+<img src="assets/top_10_lift.png"><br>
+
+• Most frequent 2-itemset: {'Type of Travel_Business travel', 'Customer Type_Loyal Customer'}<br>
+    o Frequency: 0.5085<br>
+• Top 5 frequent items:<br><br>
+<img src="assets/top_5_frequent.png"><br><br>
+
+Associaton Rules Analysis <br><br>
+<img src="assets/association_rules_analysis.png"><br><br>
+
+•Top 10 rules sorted by lift:<br><br>
+<img src="assets/top_10_lift_final.png"><br>
+- The most interesting rules that are likely to provide real business value and insights are those with high lift values.<br>
+- Lift measures how much more likely the consequent (rhs) is, given the antecedent (lhs), compared to if the two were independent.<br><br>
+
+• Insights:<br>
+o If a customer's type of travel is "Personal Travel", then there is a strong association with the customer being classified as "Eco" class and a "Loyal Customer".<br>
+o The lift value of 2.3681 indicates that the occurrence of the antecedent and consequent together is 2.3681 times more likely than if they were statistically independent.<br>
+o This means that customers who travel for personal reasons are 2.3681 times more likely to be classified as "Eco" class and "Loyal Customers" compared to what would be expected if these attributes were unrelated.<br>
+o The confidence value of 0.8167 indicates that 81.67% of the transactions that contain "Personal Travel" also contain "Eco" class and "Loyal Customer".<br>
+o The support value of 0.2535 indicates that 25.35% of the transactions contain both "Personal Travel" and "Eco" class and "Loyal Customer".<br>
+• If a customer is classified as "Eco" class and is a "Loyal Customer", then there is a strong association with their type of travel being "Personal Travel".<br>
+o The lift value of 2.3681 indicates that the occurrence of the consequent given the antecedent is 2.3681 times more likely than if they were statistically independent.<br>
+o This means that customers who are classified as "Eco" class and "Loyal Customers" are 2.3681 times more likely to travel for personal reasons compared to what would be expected if these attributes were unrelated.<br>
+o The confidence value of 0.7350 indicates that 73.50% of the transactions that contain "Eco" class and "Loyal Customer" also contain "Personal Travel".<br>
+o The support value of 0.2535 indicates that 25.35% of the transactions contain both "Eco" class and "Loyal Customer", and "Personal Travel".<br>
+• If a customer is classified as a "Loyal Customer" and their satisfaction level is "neutral or dissatisfied", then there is a strong association with their type of travel being "Personal Travel".<br>
+o The lift value of 2.0927 indicates that the occurrence of the consequent given the antecedent is 2.0927 times more likely than if they were statistically independent.<br>
+o This means that if a customer is classified as a "Loyal Customer" and their satisfaction level is "neutral or dissatisfied", there is 2.0927 times more likely that their type of travel will be "Personal Travel" compared to what would be expected if these attributes were unrelated.<br>
+o The confidence value of 0.6495 indicates that 64.95% of the transactions that contain "Loyal Customer" with a satisfaction level of "neutral or dissatisfied" also contain "Personal Travel".<br>
+o The support value of 0.2775 indicates that 27.75% of the transactions contain both "Loyal Customer" with a satisfaction level of "neutral or dissatisfied", and "Personal Travel".<br>
+• If a customer's type of travel is "Personal Travel", then there is a strong association with the customer being classified as a "Loyal Customer" and having a satisfaction level of "neutral or dissatisfied".<br>
+o The lift value of 2.0927 indicates that the occurrence of the consequent given the antecedent is 2.0927 times more likely than if they were statistically independent.<br>
+o This means that if a customer's type of travel is "Personal Travel", there is a higher likelihood that the customer will be classified as a "Loyal Customer" and have a satisfaction level of "neutral or dissatisfied" compared to what would be expected if these attributes were unrelated.<br>
+o The confidence value of 0.8940 indicates that 89.40% of the transactions that contain "Personal Travel" also contain "Loyal Customer" with a satisfaction level of "neutral or dissatisfied".<br>
+o The support value of 0.2775 indicates that 27.75% of the transactions contain both "Personal Travel" and "Loyal Customer" with a satisfaction level of "neutral or dissatisfied".<br>
+• If a customer's type of travel is "Business travel" and their satisfaction level is "satisfied", then there is a moderate association with the customer being classified as "Business" class and a "Loyal Customer".<br>
+o The lift value of 1.8417 indicates that the occurrence of the consequent given the antecedent is 1.8417 times more likely than if they were statistically independent.<br>
+o The confidence value of 0.7499 indicates that 74.99% of the transactions that contain "Business travel" with a satisfaction level of "satisfied" also contain "Business" class and "Loyal Customer".<br>
+o The support value of 0.3013 indicates that 30.13% of the transactions contain both "Business travel" with a satisfaction level of "satisfied", and "Business" class and "Loyal Customer".<br>
+• If a customer is classified as "Business" class and is a "Loyal Customer", then there is a moderate association with their type of travel being "Business travel" and their satisfaction level being "satisfied".<br>
+o The lift value of 1.8417 indicates that the occurrence of the consequent given the antecedent is 1.8417 times more likely than if they were statistically independent.<br>
+o The confidence value of 0.7400 indicates that 74.00% of the transactions that contain "Business" class and "Loyal Customer" also contain "Business travel" with a satisfaction level of "satisfied".<br>
+o The support value of 0.3013 indicates that 30.13% of the transactions contain both "Business" class and "Loyal Customer", and "Business travel" with a satisfaction level of "satisfied".<br>
+• If a customer is classified as "Eco" class, then there is a moderate association with their type of travel being "Personal Travel".<br>
+o The lift value of 1.8257 indicates that the occurrence of the consequent given the antecedent is 1.8257 times more likely than if they were statistically independent.<br>
+o The confidence value of 0.5666 indicates that 56.66% of the transactions that contain "Eco" class also contain "Personal Travel".<br>
+o The support value of 0.2549 indicates that 25.49% of the transactions contain both "Eco" class and "Personal Travel".<br>
+• If a customer's type of travel is "Personal Travel", then there is a strong association with the customer being classified as "Eco" class.<br>
+o The lift value of 1.8257 indicates that the occurrence of the consequent given the antecedent is 1.8257 times more likely than if they were statistically independent.<br>
+o The confidence value of 0.8214 indicates that 82.14% of the transactions that contain "Personal Travel" also contain "Eco" class.<br>
+o The support value of 0.2549 indicates that 25.49% of the transactions contain both "Personal Travel" and "Eco" class.<br>
+• If a customer is classified as a "Loyal Customer" and their type of travel is "Personal Travel", then there is a strong association with the customer being classified as "Eco" class.<br>
+o The lift value of 1.8247 indicates that the occurrence of the consequent given the antecedent is 1.8247 times more likely than if they were statistically independent.<br>
+o The confidence value of 0.8209 indicates that 82.09% of the transactions that contain both "Loyal Customer" and "Personal Travel" also contain "Eco" class.<br>
+o The support value of 0.2535 indicates that 25.35% of the transactions contain both "Loyal Customer" and "Personal Travel", and "Eco" class.<br>
+• If a customer is classified as "Eco" class, then there is a moderate association with the customer being classified as a "Loyal Customer" and their type of travel being "Personal Travel".<br>
+o The lift value of 1.8247 indicates that the occurrence of the consequent given the antecedent is 1.8247 times more likely than if they were statistically independent.<br>
+o The confidence value of 0.5635 indicates that 56.35% of the transactions that contain "Eco" class also contain both "Loyal Customer" and "Personal Travel".<br>
+o The support value of 0.2535 indicates that 25.35% of the transactions contain "Eco" class, "Loyal Customer", and "Personal Travel".<br>
+
+## Preprocessing
+
+1- Encode categorical variables. 2- Drop Arrival delay in minutes column.<br>
+2- Drop unnecessary columns (columns that don’t affect satisfaction)['Gender','Gate location','Departure/Arrival time convenient']<br>
+3- Apply grouping on features with continuous variables<br>
+4- Standardization: scaling features by subtracting the mean and then dividing by the standard deviation.<br>
+   This results in features that have a mean of 0 and a standard deviation of 1.<br>
 
 
 ## azure:<br>
