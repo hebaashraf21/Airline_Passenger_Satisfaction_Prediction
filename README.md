@@ -107,6 +107,17 @@ Insights:<br>
 - Remove quintile columns ['Age_quintile', 'Flight Distance_quintile', 'Arrival Delay in Minutes_quintile', 'Departure Delay in Minutes_quintile']<br>
 
 
+2.4 Clustring:<br>
+Applying Kmeans on the data with 3 clusters<br>
+<img src="assets/cluster_distribution•
+The portion of each class:<br>
+o Class 1 ==> 0.630900 <br>
+o Class 0 ==> 0.219453 <br>
+o Class 2 ==> 0.149648 <br>
+• Most of the data (63%) is in one cluster (cluster 1) <br>
+• Showing aggregates of each numeric column grouped by the cluster.png" alt="" ><br>
+
+
 
 
       
