@@ -13,7 +13,7 @@ https://www.kaggle.com/datasets/teejmahal20/airline-passenger-satisfaction
 ## 🧱 Project pipeline
 <img src="assets/pipeline.png" alt=" " >
 
-1. **Data Exploring & Cleaning**:
+**1. 🧹 Data Exploring & Cleaning**:
 - Explore the features and the unique values for each.
 - Explore dataset size:
 o Training data: 103904 rows × 25 columns
@@ -22,7 +22,7 @@ o Test data: 25976 rows × 25 columns
 - Check if there are duplicate rows
 - Remove unnecessary columns:  ID, Unamed:0
 
-2. **Exploratory Data Analysis**:<br>
+**2. 🛰️ Exploratory Data Analysis**:<br>
   **2.1 Univariate Analysis**<br>
       2.1.1 Charts for categorical variables:<br>
       <img src="assets/univariate_pie_1.png" alt="" >
@@ -219,7 +219,7 @@ o The lift value of 1.8247 indicates that the occurrence of the consequent given
 o The confidence value of 0.5635 indicates that 56.35% of the transactions that contain "Eco" class also contain both "Loyal Customer" and "Personal Travel".<br>
 o The support value of 0.2535 indicates that 25.35% of the transactions contain "Eco" class, "Loyal Customer", and "Personal Travel".<br>
 
-## 🔧 Preprocessing
+**3. 🔧 Preprocessing**
 
 1- Encode categorical variables. 2- Drop Arrival delay in minutes column.<br>
 2- Drop unnecessary columns (columns that don’t affect satisfaction)['Gender','Gate location','Departure/Arrival time convenient']<br>
@@ -227,7 +227,7 @@ o The support value of 0.2535 indicates that 25.35% of the transactions contain 
 4- Standardization: scaling features by subtracting the mean and then dividing by the standard deviation.<br>
    This results in features that have a mean of 0 and a standard deviation of 1.<br>
 
-## 🔩 Model Building, Results and Evaluation:   
+**4. 🔩 Model Building, Results and Evaluation:**   <br><br>
 <img src="assets/models.png"><br>
 
 • CatBoost achieved the highest F1 Score & Balanced Accuracy <br><br>
