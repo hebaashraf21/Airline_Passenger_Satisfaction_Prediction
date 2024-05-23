@@ -133,6 +133,8 @@ o Class 2 ==> 0.149648 <br>
 Show the cluster distribution over the categories of categorical features:<br>
 <img src="assets/distribution_by_cluster.png"><br>
 
+<img src="assets/quintile_distribution_by_cluster.png"><br>
+
 • Insights:<br>
 - Cluster 1 is the major class in all values in all columns.<br>
 - Satisfied customers are distributed over all cluster.<br>
@@ -148,6 +150,7 @@ Show the cluster distribution over the categories of categorical features:<br>
 - The portion of of customers of Eco class in cluster 2 is very small.<br>
 - Cluster 2 doesn't contain values 0 of Online boarding.<br>
 - Values 0 of Leg room service are all in cluster 1.<br>
+
 
 
 
