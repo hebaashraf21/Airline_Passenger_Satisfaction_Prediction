@@ -152,6 +152,14 @@ Show the cluster distribution over the categories of categorical features:<br>
 - Values 0 of Leg room service are all in cluster 1.<br>
 
 
+## azure:<br>
+
+<img src="assets/compute.png"><br>
+<img src="assets/workspace.png"><br>
+<img src="assets/codeRun.png"><br>
+
+
+
 
 
 
