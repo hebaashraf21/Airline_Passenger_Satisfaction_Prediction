@@ -92,6 +92,21 @@ Insights:<br>
 Positively Correlated: - Business Class ,online boarding, inflight entertainment, seat comfort, on-board service, Legroom service, cleanliness, Flight distance, and Business travels are strong reasons for people satisfaction.<br>
 Negatively Correlated: - Personal Travels, Economy Class, Eco plus Class or being Disloyal Customer results in Unsatisfaction.<br>
 
+2.3 Multivariate Analysis<br>
+<img src="assets/multivariate_correlation.png" alt="" ><br>
+Insights:<br>
+- Departure Delay is highly correlated with Arrival Delay. [Will deal with this in feature engineering].<br>
+- Inflight WiFi service and Ease of online booking are + correlated.<br>
+- Inflight entertainment, Food and Drink, Seat comfort and cleanliness are + correlated.<br>
+- Baggage handling is + correlated with Inflight service.<br>
+
+<img src="assets/arrival_departure_correlation.png" alt="" ><br>
+
+Insights:<br>
+- There is a strong correlation between the two columns we can drop one of the two columns and as Arrival Delay in Minutes column has some null, we can drop it.<br>
+- Remove quintile columns ['Age_quintile', 'Flight Distance_quintile', 'Arrival Delay in Minutes_quintile', 'Departure Delay in Minutes_quintile']<br>
+
+
 
 
       
